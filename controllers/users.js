@@ -14,9 +14,9 @@ const getUser = async (req, res, next) => {
     try {
         const id = new ObjectId(req.params.id);
         const result = await mongodb.getDb().db('cse341-project2').collection('users').find({_id: id});
-        console.log('result', result);
-        if (!result) return res.status(404).json({ message: 'User not found' });
+    
         result.toArray().then((list) => {
+            if (list.length === 0) return res.status(404).json({ message: 'User not found' });
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(list[0]);
         });
@@ -50,8 +50,8 @@ const editUser = async (req, res, next) => {
     //#swagger.tags=['Users']
     try {
         const id = new ObjectId(req.params.id);
-        const existingUser = await User.findById(id);
-        if (!existingUser) return res.status(404).json({ message: 'User not found' });
+        const existingUser = await mongodb.getDb().db('cse341-project2').collection('users').find({_id: id}).toArray();
+        if (existingUser.length === 0) return res.status(404).json({ message: 'User not found' });
         
         const User = {
             firstName: req.body.firstName || existingUser.firstName,
@@ -61,7 +61,7 @@ const editUser = async (req, res, next) => {
             birthday: req.body.birthday || existingUser.birthday
         };
         const result = await mongodb.getDb().db('cse341-project2').collection('users').replaceOne({_id: id}, User);
-        if (result.matchedCount == 0) return res.status(404).json({ message: 'User not found' });
+        
         if (result.modifiedCount > 0) {
             console.log(`User updated with the following id: ${id}`);
             res.status(204).send();

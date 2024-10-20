@@ -16,6 +16,7 @@ const getOrder = async (req, res, next) => {
         const result = await mongodb.getDb().db('cse341-project2').collection('orders').find({_id: id});
         if (!result) return res.status(404).json({ message: 'Order not found' });
         result.toArray().then((list) => {
+            if (list.length === 0) return res.status(404).json({ message: 'User not found' });
             res.setHeader('Content-Type', 'application/json');
             res.status(200).json(list[0]);
         });
@@ -51,8 +52,8 @@ const editOrder = async (req, res, next) => {
     //#swagger.tags=['Orders']
     try {
         const id = new ObjectId(req.params.id);
-        const existingOrder = await Order.findById(id);
-        if (!existingOrder) return res.status(404).json({ message: 'Order not found' });
+        const existingOrder = await mongodb.getDb().db('cse341-project2').collection('orders').find({_id: id}).toArray();
+        if (existingOrder.length === 0) return res.status(404).json({ message: 'Order not found' });
         const Order = {
             productID: req.body.productID || existingOrder.productID,
             userID: req.body.userID || existingOrder.userID,
@@ -63,7 +64,7 @@ const editOrder = async (req, res, next) => {
             orderDate: req.body.orderDate || existingOrder.orderDate
         };
         const result = await mongodb.getDb().db('cse341-project2').collection('orders').replaceOne({_id: id}, Order);
-        if (result.matchedCount == 0) return res.status(404).json({ message: 'Order not found' });
+    
         if (result.modifiedCount > 0) {
             console.log(`Order updated with the following id: ${id}`);
             res.status(204).send();
