@@ -48,8 +48,8 @@ const editItem = async (req, res, next) => {
     //#swagger.tags=['Items']
     try {
         const id = new ObjectId(req.params.id);
-        const existingItem = await Item.findById(id);
-        if (!existingItem) return res.status(404).json({ message: 'Item not found' });
+        const existingItem = await mongodb.getDb().db('cse341-project2').collection('items').find({_id: id}).toArray();
+        if (existingItem.length === 0) return res.status(404).json({ message: 'Item not found' });
         const Item = {
             name: req.body.name || existingItem.name,
             description: req.body.description || existingItem.description,
@@ -57,7 +57,6 @@ const editItem = async (req, res, next) => {
             stock: req.body.stock || existingItem.stock
         };
         const result = await mongodb.getDb().db('cse341-project2').collection('items').replaceOne({_id: id}, Item);
-        if (result.matchedCount == 0) return res.status(404).json({ message: 'Item not found' });
         if (result.modifiedCount > 0) {
             console.log(`Item updated with the following id: ${id}`);
             res.status(204).send();
