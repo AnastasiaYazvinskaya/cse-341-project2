@@ -1,0 +1,11 @@
+[
+    {
+        "productID": "67145fa4db590f963065794c",
+        "userID": "67144cb4db590f9630657945",
+        "quantity": "1",
+        "paymentMethod": "credit_card",
+        "totalAmount": "$12",
+        "status": "Pending",
+        "orderDate": "2024-01-01"
+    }
+]

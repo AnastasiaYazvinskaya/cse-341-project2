@@ -1,0 +1,11 @@
+npm i express
+npm i mongodb
+npm i dotenv
+
+npm i swagger-ui-express
+npm i swagger-autogen
+
+npm install express-validator
+
+node swagger.js
+npm start

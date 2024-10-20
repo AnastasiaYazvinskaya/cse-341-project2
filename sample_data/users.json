@@ -1,0 +1,30 @@
+[
+    {
+        "firstName": "Anastasia",
+        "lastName": "Yazvsinakay",
+        "email": "yaz19001@byui.edu",
+        "password": "1234",
+        "birthday": "1998-07-22"
+    },
+    {
+        "firstName": "Olga",
+        "lastName": "Kudasova",
+        "email": "kud18230@byui.edu",
+        "password": "12345",
+        "birthday": "1990-10-22"
+    },
+    {
+        "firstName": "Victoria",
+        "lastName": "Romanova",
+        "email": "rom19765@byui.edu",
+        "password": "123456",
+        "birthday": "1988-02-09"
+    },
+    {
+        "firstName": "Anastasia",
+        "lastName": "Loginova",
+        "email": "log18003@byui.edu",
+        "password": "1234567",
+        "birthday": "1993-12-20"
+    }
+]

@@ -1,0 +1,23 @@
+# Localhost
+### 
+GET http://localhost:3000/ HTTP/1.1 
+###
+GET http://localhost:3000/users HTTP/1.1 
+### 
+GET http://localhost:3000/users/67015097e99bb85143d415e2 HTTP/1.1 
+### 
+POST http://localhost:3000/users HTTP/1.1 
+content-type: application/json
+
+{
+"firstName": "Kristina", "lastName": "Loginova", "email": "log53647@byui.edu", "favoriteColor": "orange", "birthday": "1998-07-22"
+}
+### 
+PUT http://localhost:3000/users/67015097e99bb85143d415e2 HTTP/1.1 
+content-type: application/json
+
+{
+"firstName": "Michail", "lastName": "Romanov", "email": "rom53647@byui.edu", "favoriteColor": "purple", "birthday": "2001-07-02"
+}
+###
+DELETE http://localhost:3000/users/67015097e99bb85143d415e2 HTTP/1.1

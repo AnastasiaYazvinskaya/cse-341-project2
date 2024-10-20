@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Table",
+        "description": "Strong table",
+        "price": "$12",
+        "stock": "5"
+    },
+    {
+        "name": "Apple",
+        "description": "Tasty",
+        "price": "$1",
+        "stock": "100"
+    },
+    {
+        "name": "Paper",
+        "description": "White",
+        "price": "$5",
+        "stock": "200"
+    },
+    {
+        "name": "Pen",
+        "description": "Blue",
+        "price": "$9",
+        "stock": "50"
+    }
+]
