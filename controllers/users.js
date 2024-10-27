@@ -3,11 +3,14 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getUsers = async (req, res, next) => {
     //#swagger.tags=['Users']
+    console.log('start');
     const result = await mongodb.getDb().db('cse341-project2').collection('users').find();
+    console.log('get result');
     result.toArray().then((list) => {
         res.setHeader('Content-Type', 'application/json');
         res.status(200).json(list);
     });
+    console.log('end')
 };
 const getUser = async (req, res, next) => {
     //#swagger.tags=['Users']
@@ -28,11 +31,11 @@ const addUser = async (req, res, next) => {
     //#swagger.tags=['Users']
     try {
         const newUser = {
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            username: req.body.username,
             email: req.body.email,
             password: req.body.password,
-            birthday: req.body.birthday
+            birthday: req.body.birthday,
+            authType: 'local'
         };
         const result = await mongodb.getDb().db('cse341-project2').collection('users').insertOne(newUser);
         
@@ -54,8 +57,7 @@ const editUser = async (req, res, next) => {
         if (existingUser.length === 0) return res.status(404).json({ message: 'User not found' });
         
         const User = {
-            firstName: req.body.firstName || existingUser.firstName,
-            lastName: req.body.lastName || existingUser.lastName,
+            username: req.body.username || existingUser.username,
             email: req.body.email || existingUser.email,
             password: req.body.password || existingUser.password,
             birthday: req.body.birthday || existingUser.birthday

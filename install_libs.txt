@@ -5,7 +5,15 @@ npm i dotenv
 npm i swagger-ui-express
 npm i swagger-autogen
 
-npm install express-validator
+npm i express-validator
+
+npm i express-openid-connect
+npm i bcrypt
+npm i jsonwebtoken
+
+npm i passport-local
+npm i bcryptjs
+npm i express-session
 
 node swagger.js
 npm start

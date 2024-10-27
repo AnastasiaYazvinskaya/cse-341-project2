@@ -1,15 +1,15 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Orders API",
-    "description": "Orders API",
+    "title": "Contacts API",
+    "description": "Contacts API",
     "version": "1.0.0"
   },
-  "host": "localhost:3001",
+  "host": "cse-341-project2-fr5n.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {
@@ -17,134 +17,10 @@
         "tags": [
           "Welcome"
         ],
-        "description": "",
+        "description": "Welcome page",
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/register": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "password": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "username": {
-                  "example": "any"
-                },
-                "birthday": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Created"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/login": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/oauth": {
-      "get": {
-        "description": "",
-        "responses": {
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/signin": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/logout": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
-          }
-        }
-      }
-    },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "responses": {
-          "default": {
-            "description": ""
           }
         }
       }
@@ -154,7 +30,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get all users",
         "produces": [
           "application/json"
         ],
@@ -168,7 +44,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Add a new user",
         "parameters": [
           {
             "name": "body",
@@ -176,17 +52,20 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "any"
+                "firstName": {
+                  "example": "Mary"
+                },
+                "lastName": {
+                  "example": "Smith"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "smith@email.com"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "password1"
                 },
                 "birthday": {
-                  "example": "any"
+                  "example": "2000-01-01"
                 }
               }
             }
@@ -213,7 +92,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Get user data by its ID",
         "produces": [
           "application/json"
         ],
@@ -241,7 +120,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Update needed data of user by its ID (can be updated partly)",
         "parameters": [
           {
             "name": "id",
@@ -255,17 +134,20 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
-                  "example": "any"
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "White"
                 },
                 "email": {
-                  "example": "any"
+                  "example": "white@email.com"
                 },
                 "password": {
-                  "example": "any"
+                  "example": "password2"
                 },
                 "birthday": {
-                  "example": "any"
+                  "example": "1900-01-01"
                 }
               }
             }
@@ -273,7 +155,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -293,7 +175,7 @@
         "tags": [
           "Users"
         ],
-        "description": "",
+        "description": "Delete user by its ID",
         "parameters": [
           {
             "name": "id",
@@ -304,7 +186,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Deleted"
           },
           "400": {
             "description": "Bad Request"
@@ -320,7 +202,7 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Get all items",
         "produces": [
           "application/json"
         ],
@@ -334,7 +216,7 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Add a new item",
         "parameters": [
           {
             "name": "body",
@@ -343,16 +225,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "Chair"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "Good"
                 },
                 "price": {
-                  "example": "any"
+                  "example": "$10"
                 },
                 "stock": {
-                  "example": "any"
+                  "example": "10"
                 }
               }
             }
@@ -379,7 +261,7 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Get item data by its ID",
         "produces": [
           "application/json"
         ],
@@ -407,7 +289,7 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Update needed data of item by its ID (can be updated partly)",
         "parameters": [
           {
             "name": "id",
@@ -422,16 +304,16 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "example": "any"
+                  "example": "Phone"
                 },
                 "description": {
-                  "example": "any"
+                  "example": "New"
                 },
                 "price": {
-                  "example": "any"
+                  "example": "$50"
                 },
                 "stock": {
-                  "example": "any"
+                  "example": "7"
                 }
               }
             }
@@ -439,7 +321,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -459,7 +341,7 @@
         "tags": [
           "Items"
         ],
-        "description": "",
+        "description": "Delete item by its ID",
         "parameters": [
           {
             "name": "id",
@@ -470,7 +352,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Deleted"
           },
           "400": {
             "description": "Bad Request"
@@ -486,7 +368,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Get all orders",
         "produces": [
           "application/json"
         ],
@@ -500,7 +382,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Add a new order",
         "parameters": [
           {
             "name": "body",
@@ -509,25 +391,25 @@
               "type": "object",
               "properties": {
                 "productID": {
-                  "example": "any"
+                  "example": "67145fa4db590f963065794f"
                 },
                 "userID": {
-                  "example": "any"
+                  "example": "67144cb4db590f9630657947"
                 },
                 "quantity": {
-                  "example": "any"
+                  "example": "1"
                 },
                 "paymentMethod": {
-                  "example": "any"
+                  "example": "credit_card/paypal/cash"
                 },
                 "totalAmount": {
-                  "example": "any"
+                  "example": "$20"
                 },
                 "status": {
-                  "example": "any"
+                  "example": "Pending/Processing/Completed/Cancelled"
                 },
                 "orderDate": {
-                  "example": "any"
+                  "example": "2024-01-01"
                 }
               }
             }
@@ -554,7 +436,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Get order data by its ID",
         "produces": [
           "application/json"
         ],
@@ -582,7 +464,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Update needed data of order by its ID (can be updated partly)",
         "parameters": [
           {
             "name": "id",
@@ -597,25 +479,25 @@
               "type": "object",
               "properties": {
                 "productID": {
-                  "example": "any"
+                  "example": "67145fa4db590f963065794d"
                 },
                 "userID": {
-                  "example": "any"
+                  "example": "67144cb4db590f9630657946"
                 },
                 "quantity": {
-                  "example": "any"
+                  "example": "2"
                 },
                 "paymentMethod": {
-                  "example": "any"
+                  "example": "credit_card/paypal/cash"
                 },
                 "totalAmount": {
-                  "example": "any"
+                  "example": "$100"
                 },
                 "status": {
-                  "example": "any"
+                  "example": "Pending/Processing/Completed/Cancelled"
                 },
                 "orderDate": {
-                  "example": "any"
+                  "example": "2024-02-02"
                 }
               }
             }
@@ -623,7 +505,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Updated"
           },
           "400": {
             "description": "Bad Request"
@@ -643,7 +525,7 @@
         "tags": [
           "Orders"
         ],
-        "description": "",
+        "description": "Delete order by its ID",
         "parameters": [
           {
             "name": "id",
@@ -654,7 +536,7 @@
         ],
         "responses": {
           "204": {
-            "description": "No Content"
+            "description": "Deleted"
           },
           "400": {
             "description": "Bad Request"
